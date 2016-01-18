@@ -1,0 +1,39 @@
+---
+title: "4 Day Schedule"
+author: "Mark Dunning"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: pdf_document
+---
+
+# Day One
+
++ [Introduction to Bioconductor and exploratory data analysis (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day1/intro.html)
++ [R and Bioconductor recap (P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day1/bioc-intro.pdf)
++ [Introduction to NGS Sequencing (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day1/ngs-intro.html)
++ [Quality Assessment of NGS Data (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day1/NGS_QC_inesdesantiago.pdf)
++ [Quality Assessment of NGS Data (P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day1/fastqc_sweave.pdf)
++ [Quality Assessment of NGS Data (Quiz!)](https://docs.google.com/forms/d/1h1sXLptX5FUhoVnmwdY7MKEaU-39fcBYpRIsdVpH-LM/viewform?c=0&w=1f)
+
+# Day Two
+
++ [Representing Sequencing data in Bioconductor (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day2/repSeqData.html)
++ [Representing Sequencing data in Bioconductor (P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day2/StringsAndRanges-Prac.pdf)
++ [Linear Models and Experimental Design (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day2/Lect4-DesignStatistics_HTSeq.pdf)
++ [Introduction to RNA Sequencing (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day2/rnaSeq_July.pdf)
++ [RNA-Seq reads to counts (P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day2/rnaSeq_align.pdf)
+
+
+# Day Three
++ [RNA-seq Practical](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day3/rnaSeq_DE.pdf)
++ [Introduction to Genome Annotation](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day3/annoAndViz.html)
++ [Genome Annotation Practical](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day3/new-anno-prac.pdf)
++ [Downstream analysis of RNA-seq(L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day4/Downstream_Analysis_of_Transcrptomic_Data.pdf)
++ [Downstream analysis of RNA-seq(P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day4/Day4_RNseq_DownstreamAnalysis.pdf)
+
+# Day Four
+
++ [Introduction to ChIP-Seq (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day4/Introduction_to_ChIPseq_July2015_ShamithSamarajiwa.pdf)
++ [Analysis of ChIP-Seq (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day4/ChIP_QC_presentation.pdf)
++ [ChIP-Seq Practical](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day4/chipqc_sweave.pdf)
++ [Downstream Analysis of ChIP-Seq Data (L)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day5/ChIPseq_Downstream_analysis_July2015_ShamithSamarajiwa.pdf)
++ [Downstream Analysis of ChIP-Seq Data (P)](http://bioinformatics-core-shared-training.github.io/cruk-bioinf-sschool/Day5/ChIP-Seq_Practical_2.pdf)

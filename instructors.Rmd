@@ -1,0 +1,17 @@
+---
+title: "Instructors"
+author: "Mark Dunning"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: pdf_document
+---
+
+# Mark Dunning
+
+![mark](images/Mark-Dunning.jpg)
+
+Mark is the Bioinformatics Training Coordinator at Cancer Research Uk Cambridge Institute. He has several years of experience working in the Bioinformatics Core; analysing data from various high-throughput technologies and developing computational pipelines. 
+
+# Tom Carroll
+
+# Nuno Barbosa-Morais
+
