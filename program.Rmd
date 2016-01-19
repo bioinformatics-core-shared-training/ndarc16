@@ -4,3 +4,49 @@ author: "Mark Dunning"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output: pdf_document
 ---
+
+
+# Tues, March 29th
+
++ 09:30 - 11:00 Introduction to Bioconductor and exploratory data analysis
++ 11:00 - 11:30 ***Coffee Break***
++ 11:30 - 12:30 Practical: Basics of Analysing high-throughput data in Bioconductor
++ 12:30 - 14:00 ***LUNCH BREAK***
++ 14:00 - 16:00 Introduction to NGS sequencing and quality assessment of NGS data
++ 16:00 - 16:30 ***Tea Break ***
++ 16:30 - 18:00 Practical: Quality assessment of NGS data
+
+# Wed, March 30th
+
++ 09:30 - 11:00 Morning Wrap-up (what have we done so far?)
+                Working with Genomic Intervals in Bioconductor
++ 11:00 - 11:30 ***Coffee Break***
++ 11:30 - 12:30 Working with biological sequences in Bioconductor
++ 12:30 - 14:00 ***LUNCH BREAK***
++ 14:00 - 16:00 Linear Models and Experimental Design
++ 16:00 - 16:30 ***Tea Break***
++ 16:30 - 18:00 Introduction to RNA-seq and going from 'reads' to 'counts'
+
+
+
+# Thu, March 31st
++ 09:30 - 11:00 Morning wrap-up (what have we done so far?)
+                Differential Expression for RNA-seq Data
++ 11:00 - 11:30 ***Coffee Break***
++ 11:30 - 12:30 Continued RNA-seq practical
++ 12:30 - 14:00 ***LUNCH BREAK***
++ 14:00 - 16:00 Genome Annotation resources in Bioconductor
++ 16:00 - 16:30 ***Tea Break***
++ 16:30 - 18:00 Downstream analysis of RNA-seq analysis
+
+
+# Fri, April 1st
+
++ 09:30 - 11:00 Morning wrap-up (what have we done so far?)
+                Introduction to ChIP-seq
++ 11:00 - 11:30 ***Coffee Break***
++ 11:30 - 12:30 Practical: Quality assessment of ChIP-seq
++ 12:30 - 14:00 ***LUNCH BREAK***
++ 14:00 - 16:00 Downstream analysis of ChIP-seq
++ 16:00 - 16:30 ***Tea Break***
++ 16:30 - 18:00 Final wrap-up Session
