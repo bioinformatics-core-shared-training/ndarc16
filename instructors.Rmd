@@ -9,9 +9,12 @@ output: pdf_document
 
 ![mark](images/Mark-Dunning.jpg)
 
-Mark is the Bioinformatics Training Coordinator at Cancer Research Uk Cambridge Institute. He has several years of experience working in the Bioinformatics Core; analysing data from various high-throughput technologies and developing computational pipelines. 
+Mark obtained his PhD in the Statistics and Computational Biology group of Simon Tavare at the University of Cambridge. During this time, he developed Bioconductor packages for the analysis of Illumina microarray data. He then joined the Bioinformatics Core at Cancer Research Uk Cambridge Institute and has several years of experience working in analysing data from various high-throughput technologies and developing computational pipelines. In his current role, Mark organises and develops Bioinformatics training courses.
+
+**Affiliation:** Cancer Research Uk Cambridge Institute, University of Cambridge
 
 # Tom Carroll
 
+**Affilation:** Medical Research Council, Clinical Sciences Centre (London)
 # Nuno Barbosa-Morais
 

@@ -22,4 +22,6 @@ Several Online videos are available that cover this materials. For example
 - http://blog.revolutionanalytics.com/2012/12/coursera-videos.html
 - http://bitesizebio.com/webinar/20600/beginners-introduction-to-r-statistical-software
 
-Some introductory statistics will be also be assumed. See [Statistics at Square One](http://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one) for a good overview. 
+Some introductory statistics, such as summary statistics for continuous data (mean, variance etc) and interpreting the results of a t-test, will be also be assumed. See "Statistics at Square One"" Chapters 1, 2, 3 and 7 (http://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one) for a good overview.
+
+Basic unix skills, such as being able to list the contents of a directory and copy files, would also be an advantage. See "Session 1" of the Software Carpentry training for a Unix introduction (http://bioinformatics-core-shared-training.github.io/shell-novice/)
