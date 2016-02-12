@@ -15,6 +15,8 @@ Mark Dunning obtained his PhD in the Statistics and Computational Biology group 
 
 # Tom Carroll
 
+![Tom](images/Tom_Carroll.jpg)
+
 After completing his masters in Bioinformatics, Tom Carroll studied for his PhD at Kings College London investigating the transcriptomic effects of environmental toxicants. Following this, Tom joined Cancer Research Uk Cambridge Institute as a Senior Bioinformatics Analyst working on a variety of high throughput sequencing projects before joining the MRC Clinical Sciences Centre as the Head Of Bioinformatics in 2014. While working as the Head of Bioinformatics, Tom directs training activities, data capture and processing from research cores and manages the Core Bioinformatics Team. Tom has gained substantial experience in ChIP-seq analysis working both at the MRC and CRUK and has created and maintains several ChIP-seq related Bioconductor packages (ChIPQC, tracktables, soGGi).
 
 **Affilation:** Medical Research Council, Clinical Sciences Centre (Imperial College London)
