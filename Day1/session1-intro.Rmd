@@ -1,0 +1,691 @@
+---
+title: "Course Introduction"
+author: "Mark Dunning"
+date: "28/03/2016"
+output: slidy_presentation
+
+---
+
+# Welcome!
+
+
+## About us
+
+![us](../images/instructors.png)
+
+- Mark
+    + Cancer Research Uk, Cambridge
+    + @DrMarkDunning
+    + `mark.dunning@cruk.cam.ac.uk`
+    
+- Tom
+    + Medical Research Council, Clinical Sciences Centre, London
+    + `thomas.carroll@csc.mrc.ac.uk`
+- Nuno
+    + Instituto de Medicina Molecular, Lisboa
+    + `nmorais@medicina.ulisboa.pt`
+
+
+## Admin
+
+
+## About the Course
+
+- We will tell about '*best practice*' tools that we use in daily work as Bioinformaticians
+- You will (probably) not come away being an expert
+- We cannot teach you everything about NGS data
+    + plus, it is a fast-moving field
+- RNA and ChIP only
+    + much of the initial processing is the same for other assays
+- However, we hope that you will
+    + Understand how your data are processed
+    + Be able to explore your data - no programming required
+    + Increase confidence with R and Bioconductor
+    + Be able to explore new technologies, methods, tools as they come out
+
+## Further disclaimer
+
+You'll probably see this quote in every stats course you go to
+
+![fisher](../images/fisher.jpg)
+
+> To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of.”. R.A. Fisher, 1938
+
+If you haven't designed your experiment properly, then all the Bioinformatics we teach you won't help: Make friends with your local statistician
+
+- We have some [materials](http://bioinformatics-core-shared-training.github.io/experimental-design/) you can look at
+
+
+# Course Outline
+
+## Day 1
+
+- Recap of R
+- Introduce the Bioconductor project
+- Hands-on experience with NGS data
+    + IGV
+    + FastQC
+
+## Day 2
+
+- Data structures for NGS analysis in R
+- Statistical theory behind RNA-seq analysis
+- RNA-seq intro
+- Aligning and counting for RNA-seq
+
+## Day 3
+
+- Differential expression analysis for RNA-seq
+- Annotating RNA-seq results
+- Downstream analysis of RNA-seq
+
+## Day 4
+
+- Downstream analysis of RNA-seq
+- Intro to ChIP-seq
+- QA and analysis of ChIP data
+- Wrap-up
+
+# Crash-course in R
+
+## Support for R
+
+- Online forums
+- Local user groups
+- Documentation via `?` or `help.start()`
+- `browseVignettes()` to see package user guides ('*vignettes*')
+- ***Get into the habit of using these***
+    + or ***google***
+
+## RStudio
+
+![RStudio](http://www.rstudio.com/wp-content/uploads/2014/03/blue-125.png)
+
+- Rstudio is a free environment for R
+- Convenient menus to access scripts, display plots
+- Still need to use *command-line* to get things done
+- Developed by some of the leading R programmers
+
+## Typical tasks in an R analysis
+
+- Read some data from a `.csv` or `.txt` file
+    + R creates some representation of the data
+- Explore the data
+    + Subset, manipulate to pull out interesting observations
+    + Plotting
+    + Statistical testing
+- Output the results
+
+
+## Variables and functions
+
+- We can save the result of a computation as a *variable* using the *assignment* operator `<-`
+- Calculations are done using *functions*
+```{r}
+x <- sqrt(25)
+x + 5
+y <- x +5
+y
+```
+
+## Vectors
+
+- A vector is often used to combine multiple values. The resulting object is indexed and particular values can be queried using the `[]` operator
+
+```{r}
+vec <- c(1,2,3,6)
+vec[1]
+```
+- The values can be numeric or text
+    + but they must be all the same type
+    
+```{r}
+vec <- c("A"," B","C","D")
+vec[1]
+```
+
+
+## Vectors
+
+- Calculations can be performed on vectors
+
+```{r}
+vec <- c(1,2,3,6)
+vec+2
+vec*2
+mean(vec)
+sum(vec)
+```
+
+## Data frames
+
+- These can be used to represent familiar tabular (row and column) data
+- Each column is a vector
+```{r}
+df <- data.frame(A = c(1,2,3,6), B = c(7,8,10,12))
+df
+```
+- Note that each row is named according to its index
+    + we can change this if we wish
+    
+## Data frames
+
+Don't need the same data *type* in each column
+
+```{r}
+df <- data.frame(A = c(1,2,3,6), 
+                 B = month.name[c(7,8,10,12)])
+df
+```
+
+## Getting data into R
+
+- Various functions can help to read tabular data into R as a data frame
+    + `read.csv`, `read.delim`
+    + also `read.xls` from `gdata` for Excel data
+- Need to know the file path, or read from your ***working directory***
+- Usually need to know something about the format of the data
+    + comma / tab separated?
+    + any header lines?
+    + any lines to skip?
+- ***Always*** check the data frame before proceeding
+    + R may not throw an error, but the format might not be as you expect
+    + `head` prints the first few lines
+    + `dim` will print the dimensions
+
+##Data frames
+Once we have imported our data into R, we can start to explore it
+
+- We can subset data frames using the `[]`, but need to specify row and column indices
+
+```{r}
+df[1,2]
+df[2,1]
+```
+
+##Data frames
+
+Or leave the row or column index blank to get all rows and columns respectively
+
+```{r}
+df[1,]
+df[,2]
+```
+
+## Data frames
+
+Can also subset using the column name
+- the result is a ***vector***
+```{r}
+df$A
+df$B
+```
+
+## Subsetting using vectors
+- A vector of indices can be used to subset
+- Various shortcuts to define this vector
+    + `c` 
+    + `:` makes a sequence with start and end value
+    + `seq` function can also be used
+        + `?seq`
+```{r}
+df[c(1,2,3),]
+df[1:3,]
+```
+- In both cases, the result is a data frame
+
+
+
+
+## Plotting 
+- R is able to produce all types of graph that we are familiar with
+- Example and capabilities can be seen using the `example` function (runs example code that is defined for the function)
+    + scatter plot 
+        + `example(plot)`
+    + bar plot 
+        + `example(barplot)`
+    + boxplot 
+        + `example(boxplot)`
+    + histogram
+        + `example(hist)`
+- A good overview on [Quick-R](http://www.statmethods.net/graphs/index.html)
+- Plots can be customised
+    + colours, labels, adding additional points lines etc
+    + layouts
+- Plots can be exported in variety of formats
+
+## Simple plotting
+
+```{r}
+x <- 1:10
+y <- 2*x
+plot(x,y)
+```
+
+## Simple plotting
+
+```{r}
+x <- runif(100)
+hist(x)
+```
+
+## Simple plotting
+
+```{r}
+dd <- data.frame(A=rnorm(100, mean = 2), 
+                 B = rnorm(100, mean=5))
+boxplot(dd)
+```
+
+## Customising a plot
+```{r echo=FALSE}
+x <- 1:10
+y <- 2*x
+```
+
+
+```{r}
+plot(x,y,xlab="My X label",ylab="My Y label"
+     ,main="My Title",col="steelblue",pch=16,xlim=c(0,20))
+points(x,x,col="red",pch=17)
+grid()
+abline(0,2,lty=2)
+abline(0,1,lty=2)
+text(12,10, label="y = x")
+text(12,20, label="y = 2x")
+```
+
+## Subsetting / filtering data etc
+
+- R has various comparison operators
+    + `<`,`>`, `==`, `!=`
+- Each comparison gives a `TRUE` or `FALSE` ***logical*** or ***boolean*** value
+
+```{r}
+values <- rnorm(10)
+values < 0
+values > 0
+```
+
+## Subsetting / filtering data etc
+
+```{r}
+data <- data.frame(Counts = values, Name = rep(c("A","B")))
+data
+data[values>0,]
+```
+
+## Subsetting / filtering data etc
+
+```{r}
+data$Name == "A"
+data[data$Name == "A",]
+data[data$Name !="A",]
+```
+
+## Subsetting / filtering data etc
+
+- Logical vectors can be combined with `&` and `|` when we want ***all*** tests, or ***any*** test, to be true
+```{r}
+data$Name == "A" & values > 0
+data[data$Name == "A" & values > 0,]
+data$Name == "A" | values > 0
+data[data$Name == "A" | values > 0,]
+```
+
+## Conditional behaviour
+
+- A logical test can also dictate the behaviour of our code
+    + we use the  ***if / else*** syntax
+```{r eval=FALSE}
+
+if (some.condition.holds){
+  do.this...
+} else {
+  do.this.instead.....
+}
+
+```
+
+## Example code
+
+-  Often used in checking for errors and to give more informative messages to the user
+- `file.exists` will return `TRUE` or `FALSE` if a specified file name could be found
+- `stop` will stop and give a message to the user
+
+```{r eval=FALSE}
+
+if(file.exists(myfile)){
+  data <- read.delim(myfile)
+  ...rest of your code here...
+  ...
+} else{
+    stop("Could not find input file")
+}
+
+```
+
+
+## Automating repetitive tasks
+
+- For an analysis involving many steps, we really want to be writing an R ***script***
+- Often we want to repeat the same procedure in the script
+    + e.g. Histograms of various columns from a file
+```{r eval=FALSE}
+hist(data[,1])
+hist(data[,2])
+hist(data[,3])
+....
+```
+- Note that each line of code is the same except for the column index
+- Tedious if we have a large number of columns
+- Prone to error
+
+##Using a `for` loop
+
+- We can simplify this code to 
+```{r eval=FALSE}
+hist(data[,i])
+```
+- Where i can be 1, 2, or 3. 
+
+##Using a `for` loop
+
+```{r eval=FALSE}
+i <- 1
+hist(data[,i])
+i <- 2
+hist(data[,i])
+i <- 3
+hist(data[,i])
+
+```
+
+##Using a `for` loop
+
+- A loop can defined as follows. The code inside the `{}` will be run for each value of i in turn
+```{r eval=FALSE}
+
+for(i in 1:3){
+  hist(data[,i])
+  }
+
+```
+
+##Using a `for` loop
+
+- Multiple lines of code can be included in inside the `{}`
+```{r eval=FALSE}
+
+for(i in 1:3){
+  ...process the data....
+  hist(data[,i])
+  ...customise the plot...
+  ...export...
+  ...etc...
+  
+  }
+
+```
+
+## R packages
+
+- The standard download of R includes the basic functions for importing data, doing stats and plotting
+- Anything fancier might require extra packages (of which there are 1000s)
+- Most populated repository is CRAN: [MetaCRAN](http://www.r-pkg.org/)
+    + ***Task Views*** can narrow-down your search
+- We will be mostly using [Bioconductor](www.bioconductor.org)
+
+## Installing a package
+
+- You need to install a package once per R version
+- From CRAN
+```{r eval=FALSE}
+install.packages("your.package.name.here")
+```
+- From Bioconductor
+    + will also install any packages that it ***depends*** on
+```{r eval=FALSE}
+source("http://www.bioconductor.org/biocLite.R")
+biocLite("my.bioc.package")
+```
+- Every time you want to use the package, you need to use the `library` function
+```{r eval=FALSE}
+library(your.package.name.here)
+library(my.bioc.package)
+```
+
+
+# Why use R for High-Throughput Analysis?
+
+## The Bioconductor project
+
+![BioC](../images/logo_bioconductor.png)
+
+-  Packages analyse all kinds of Genomic data (>800)
+- Compulsory documentation (*vignettes*) for each package
+- 6-month release cycle
+- Course Materials
+- Example data and workflows
+- Common, re-usable framework and functionality
+- Available [Support](https://support.bioconductor.org/)
+
+## Example packages
+
+![citations](../images/citations.png)
+
+##Downloading a package
+
+Each package has its own landing page. e.g. http://bioconductor.org/packages/release/bioc/html/beadarray.html. Here you'll find;
+
+- Installation script (will install all dependancies)
+- Vignettes and manuals
+- Details of package maintainer
+- After downloading, you can load using the `library` function. e.g. `library(beadarray)`
+
+##Reading data using Bioconductor
+
+Recall that data can be read into R using `read.csv`, `read.delim`, `read.table` etc. Several packages provided special modifications of these to read raw data from different manufacturers
+
+- `limma` for various two-colour platforms
+- `affy` for Affymetrix data
+- `beadarray`, `lumi`, `limma` for Illumina BeadArray data
+- A common class is used to represent the data
+
+##Reading data using Bioconductor
+
+A dataset may be split into different components
+
+- Matrix of expression values
+- Sample information
+- Annotation for the probes
+
+In Bioconductor we will often put these data the same object for easy referencing. The `Biobase` package has all the code to do this.
+
+## Example data
+
+```{r results='hide',echo=FALSE}
+suppressPackageStartupMessages(library(Biobase))
+```
+- Biobase is the package that provide the infrastructure to represent microarray data
+- Evaluating the name of the object does not print the whole object to screen
+```{r}
+library(Biobase)
+data(sample.ExpressionSet)
+sample.ExpressionSet
+```
+
+##Extracting data
+
+- Convenient `accessor` functions are provided
+- Each row is a ***gene***
+- Each column is a ***sample***
+```{r}
+evals <- exprs(sample.ExpressionSet)
+dim(evals)
+evals[1:4,1:3]
+```
+
+##Extracting data
+
+- Note the *rows* in the sample information are in the same order as the *columns* in the expression matrix
+   + information about the sample in ***column*** 1 of the expression matrix is in ***row*** 1 of the pheno data
+   + etc
+
+```{r}
+sampleMat <- pData(sample.ExpressionSet)
+dim(sampleMat)
+head(sampleMat)
+```
+
+
+
+## Subsetting rules
+`ExpressionSet` objects are designed to behave like data frames. e.g. to subset the first 10 genes
+
+
+```{r}
+sample.ExpressionSet[1:10,]
+```
+
+## Subsetting rules
+
+What does this do?
+
+```{r}
+sample.ExpressionSet[,1:10]
+```
+
+## Subsetting rules
+
+```{r}
+males <- sampleMat[,1] == "Male"
+sample.ExpressionSet[,males]
+maleData <- sample.ExpressionSet[,males]
+```
+
+## Subsetting rules
+
+```{r}
+sample.ExpressionSet[,
+        sampleMat$score < 0.5
+        ]
+```
+
+## Starting to visualise the data
+
+Recall that several plots can be created from a *vector* of numerical values
+
+```{r}
+hist(evals[,1])
+```
+
+## Starting to visualise the data
+
+Or from a data frame
+
+```{r}
+boxplot(evals[,1:5])
+```
+
+## Starting to visualise the data
+
+One sample against another 
+```{r}
+plot(evals[,1],evals[,2])
+```
+
+## Starting to visualise the data
+
+One gene against another
+```{r}
+plot(evals[1,],evals[2,])
+```
+
+
+## The MA plot
+
+We often work with **M** and **A** values as defined
+
+
+```{r warning=FALSE}
+M <- log2(evals[,1]) - log2(evals[,2])
+A <- 0.5*(log2(evals[,1]) + log2(evals[,2]))
+plot(A,M)
+```
+
+## The MA plot
+
+- log transformation is used to put values on scale 0 to 16
+- Line *M=0* indicates equivalent expression in two arrays
+    + where we would expect most genes to be
+- Outliers on y axis are *candidates* to be *differentially expressed*
+
+```{r echo=FALSE,warning=FALSE}
+M <- log2(evals[,1]) - log2(evals[,2])
+A <- 0.5*(log2(evals[,1]) + log2(evals[,2]))
+plot(A,M)
+abline(h=0,lty=2,col="red")
+points(A[which(abs(M) > 3.5)], M[which(abs(M) > 3.5)],col="red",pch=20)
+```
+
+
+## Statistical Testing
+
+- `R` started as a language *for* statisticians, *made by* statisticians
+- naturally, it has a whole range of statistical tests available as functions
+    + `t.test`
+    + `wilcox.test`
+    + `var.test`
+    + `anova`
+    + etc.....
+```{r echo=FALSE}
+mygene <- evals[314,]
+myfactor <- pData(sample.ExpressionSet)$sex
+```
+
+## Statistical Testing
+
+
+```{r}
+mygene
+myfactor
+
+```
+
+## Statistical Testing
+
+The ***tilde*** (`~`) is R's way of creating a ***formula***
+```{r}
+boxplot(mygene~myfactor)
+```
+
+
+## Statistical Testing
+```{r}
+t.test(mygene~myfactor)
+```
+
+- we need to be wary of multiple-testing issues
+
+## Biological Interpretation of Results
+
+- Bioconductor provide a number of annotation packages
+    + e.g. `hgu95av2.db` which can be installed in the same manner as other Bioconductor packages
+    + can map between manufacturer ID more-familiar IDs
+    + can map to pathways ontologies
+        + using the latest database versions etc
+```{r message=FALSE, warning=FALSE}
+library(hgu95av2.db)
+mget("31553_at",hgu95av2SYMBOL)
+mget("31553_at",hgu95av2ENTREZID)
+mget("31553_at",hgu95av2GO)
+```
+
+## Introducing the practical
+
+- Refresh your memory of R skills
+    + reading data
+    + subsetting data
+    + plotting
+- Introduce some Bioconductor classes
