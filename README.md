@@ -1,6 +1,10 @@
 # NDARC16
 4-day course at Instituto Gulbenkian de Ciência
 
+Official course page
+
+http://gtpb.igc.gulbenkian.pt/bicourses/NDARC16/
+
 # Overview
 
 High-throughput technologies such as next generation sequencing (NGS) can routinely produce massive amounts of data. These technologies allow us to describe all variants in a genome or to detect the whole set of transcripts that are present in a cell or tissue. However, such datasets pose new challenges in the way the data have to be analyzed, annotated and interpreted which are not trivial and are daunting to the wet-lab biologist. This course covers state-of-the-art and best-practice tools for NGS RNA-seq and ChIP-seq data analysis, which are of major relevance in today’s genomic and gene expression studies. 
