@@ -688,4 +688,3 @@ mget("31553_at",hgu95av2GO)
     + reading data
     + subsetting data
     + plotting
-- Introduce some Bioconductor classes
