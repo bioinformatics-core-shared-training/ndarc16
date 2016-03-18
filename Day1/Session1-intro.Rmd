@@ -45,13 +45,13 @@ output: slidy_presentation
 
 ## Further disclaimer
 
-You'll probably see this quote in every stats course you go to
-
 ![fisher](../images/fisher.jpg)
 
 > To consult the statistician after an experiment is finished is often merely to ask him to conduct a post mortem examination. He can perhaps say what the experiment died of.”. R.A. Fisher, 1938
 
-If you haven't designed your experiment properly, then all the Bioinformatics we teach you won't help: Make friends with your local statistician
+If you haven't designed your experiment properly, then all the Bioinformatics we teach you won't help: Consult with your local statistician - preferably **not the day before your grant is due!!!!**
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/Hz1fyhVOjr4" frameborder="0" allowfullscreen></iframe>
 
 - We have some [materials](http://bioinformatics-core-shared-training.github.io/experimental-design/) you can look at
 
@@ -86,16 +86,63 @@ If you haven't designed your experiment properly, then all the Bioinformatics we
 - QA and analysis of ChIP data
 - Wrap-up
 
+# Historical context
+
+## Cast your minds back a few years..
+
+![array-summary](../images/array-summary.png)
+
+## Plenty of success stories with microarrays
+
+![array-achievements](../images/array-achievements.png)
+
+## What did we learn from arrays?
+
+- Experimental Design; despite this fancy new technolgy, if we don't design the experiments properly we won't get meaningful conclusions
+- Quality assessment; Yes, NGS experiments can still go wrong!
+- Normalisation; NGS data come with their own set of biases and error that need to be accounted for
+- Stats; testing for RNA-seq is built-upon the knowledge from microarrays
+- Plenty of tools and workflows were established.
+- ***Don't forget about arrays; the data are all out there somewhere waiting to be discovered and explored***
+
+## Reproducibility is key
+
+![duke-scandal](../images/rep-research-nyt.png)
+
+Two Biostatiscians (later termed '*Forensic Bioinformaticians*') from M.D. Anderson used R extensively during their re-analysis and investigation of a Clinical Prognostication paper from Duke. The subsequent [scandal](https://www.youtube.com/watch?v=W5sZTNPMQRM) put Reproducible Research on the map.
+
+Keith Baggerly's talk from Cambridge in 2010 is highy-recommended.
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/7gYIs7uYbMo" frameborder="0" allowfullscreen></iframe>
+
+## Advantages of R
+
+![NYT](../images/NYTimes_R_Article.png)
+
+The R programming language is now recognised beyond the academic community as an effect solution for data analysis and visualisation. [Notable users of R](http://www.revolutionanalytics.com/companies-using-r) include [Facebook](http://blog.revolutionanalytics.com/2010/12/analysis-of-facebook-status-updates.html), [google](http://blog.revolutionanalytics.com/2009/05/google-using-r-to-analyze-effectiveness-of-tv-ads.html), [Microsoft](http://blog.revolutionanalytics.com/2014/05/microsoft-uses-r-for-xbox-matchmaking.html) (who recently [invested](http://blogs.microsoft.com/blog/2015/01/23/microsoft-acquire-revolution-analytics-help-customers-find-big-data-value-advanced-statistical-analysis/) in a commerical provider of R), and the [New York Times](http://blog.revolutionanalytics.com/2011/03/how-the-new-york-times-uses-r-for-data-visualization.html).
+
+## Key features
+
+- Open-source
+- Cross-platform
+- Access to existing visualisation / statistical tools
+- Flexibility
+- Visualisation and interactivity
+- Add-ons for many fields of research
+- Facilitating ***Reproducible Research***
+
+
 # Crash-course in R
+
+
 
 ## Support for R
 
-- Online forums
-- Local user groups
+- Online forums such as [Stack Overflow](http://stackoverflow.com/questions/tagged/r) regularly feature R
+- [Blogs](http://www.r-bloggers.com/)
+- Local [user groups](http://blog.revolutionanalytics.com/local-r-groups.html) 
 - Documentation via `?` or `help.start()`
-- `browseVignettes()` to see package user guides ('*vignettes*')
-- ***Get into the habit of using these***
-    + or ***google***
+
 
 ## RStudio
 
@@ -106,21 +153,20 @@ If you haven't designed your experiment properly, then all the Bioinformatics we
 - Still need to use *command-line* to get things done
 - Developed by some of the leading R programmers
 
-## Typical tasks in an R analysis
+## R recap
 
-- Read some data from a `.csv` or `.txt` file
-    + R creates some representation of the data
-- Explore the data
-    + Subset, manipulate to pull out interesting observations
-    + Plotting
-    + Statistical testing
-- Output the results
+R can do simple numerical calculations
+```{r}
+2  + 2
+sqrt(25)
+```
 
+Here, `sqrt` is a *function* and the number 25 was used as an *argument* to the function. Functions can have multiple arguments
 
-## Variables and functions
+## Variables
 
-- We can save the result of a computation as a *variable* using the *assignment* operator `<-`
-- Calculations are done using *functions*
+We can save the result of a computation as a *variable* using the *assignment* operator `<-`
+
 ```{r}
 x <- sqrt(25)
 x + 5
@@ -130,28 +176,18 @@ y
 
 ## Vectors
 
-- A vector is often used to combine multiple values. The resulting object is indexed and particular values can be queried using the `[]` operator
+A vector can be used to combine multiple values. The resulting object is indexed and particular values can be queried using the `[]` operator
 
 ```{r}
 vec <- c(1,2,3,6)
 vec[1]
 ```
-- The values can be numeric or text
-    + but they must be all the same type
-    
-```{r}
-vec <- c("A"," B","C","D")
-vec[1]
-```
-
 
 ## Vectors
 
-- Calculations can be performed on vectors
+Calculations can be performed on vectors
 
 ```{r}
-vec <- c(1,2,3,6)
-vec+2
 vec*2
 mean(vec)
 sum(vec)
@@ -159,15 +195,13 @@ sum(vec)
 
 ## Data frames
 
-- These can be used to represent familiar tabular (row and column) data
-- Each column is a vector
+These can be used to represent familiar tabular (row and column) data
+
 ```{r}
 df <- data.frame(A = c(1,2,3,6), B = c(7,8,10,12))
 df
 ```
-- Note that each row is named according to its index
-    + we can change this if we wish
-    
+
 ## Data frames
 
 Don't need the same data *type* in each column
@@ -178,25 +212,9 @@ df <- data.frame(A = c(1,2,3,6),
 df
 ```
 
-## Getting data into R
-
-- Various functions can help to read tabular data into R as a data frame
-    + `read.csv`, `read.delim`
-    + also `read.xls` from `gdata` for Excel data
-- Need to know the file path, or read from your ***working directory***
-- Usually need to know something about the format of the data
-    + comma / tab separated?
-    + any header lines?
-    + any lines to skip?
-- ***Always*** check the data frame before proceeding
-    + R may not throw an error, but the format might not be as you expect
-    + `head` prints the first few lines
-    + `dim` will print the dimensions
-
 ##Data frames
-Once we have imported our data into R, we can start to explore it
 
-- We can subset data frames using the `[]`, but need to specify row and column indices
+We can subset data frames using the `[]`, but can specify row and column indices
 
 ```{r}
 df[1,2]
@@ -205,258 +223,52 @@ df[2,1]
 
 ##Data frames
 
-Or leave the row or column index blank to get all rows and columns respectively
-
 ```{r}
 df[1,]
 df[,2]
 ```
 
-## Data frames
 
-Can also subset using the column name
-- the result is a ***vector***
-```{r}
-df$A
-df$B
-```
+Or leave the row or column index blank to get all rows and columns respectively
 
-## Subsetting using vectors
-- A vector of indices can be used to subset
-- Various shortcuts to define this vector
-    + `c` 
-    + `:` makes a sequence with start and end value
-    + `seq` function can also be used
-        + `?seq`
-```{r}
-df[c(1,2,3),]
-df[1:3,]
-```
-- In both cases, the result is a data frame
+## Plotting
 
+All your favourite types of plot can be created in R
 
-
-
-## Plotting 
-- R is able to produce all types of graph that we are familiar with
-- Example and capabilities can be seen using the `example` function (runs example code that is defined for the function)
-    + scatter plot 
-        + `example(plot)`
-    + bar plot 
-        + `example(barplot)`
-    + boxplot 
-        + `example(boxplot)`
-    + histogram
-        + `example(hist)`
-- A good overview on [Quick-R](http://www.statmethods.net/graphs/index.html)
-- Plots can be customised
-    + colours, labels, adding additional points lines etc
-    + layouts
-- Plots can be exported in variety of formats
-
-## Simple plotting
-
-```{r}
-x <- 1:10
-y <- 2*x
-plot(x,y)
-```
-
-## Simple plotting
-
-```{r}
-x <- runif(100)
-hist(x)
-```
-
-## Simple plotting
-
-```{r}
-dd <- data.frame(A=rnorm(100, mean = 2), 
-                 B = rnorm(100, mean=5))
-boxplot(dd)
-```
-
-## Customising a plot
 ```{r echo=FALSE}
-x <- 1:10
-y <- 2*x
+
+par(mfrow=c(2,2))
+barplot(VADeaths, beside = TRUE,
+        col = c("lightblue", "mistyrose", "lightcyan",
+                "lavender", "cornsilk"), ylim = c(0, 100))
+boxplot(len ~ dose, data = ToothGrowth,
+        boxwex = 0.25, at = 1:3 - 0.2,
+        subset = supp == "VC", col = "yellow",
+        main = "Guinea Pigs' Tooth Growth",
+        xlab = "Vitamin C dose mg",
+        ylab = "tooth length",
+        xlim = c(0.5, 3.5), ylim = c(0, 35), yaxs = "i")
+boxplot(len ~ dose, data = ToothGrowth, add = TRUE,boxwex = 0.25, at = 1:3 + 0.2,subset = supp == "OJ", col = "orange")
+legend(2, 9, c("Ascorbic acid", "Orange juice"),fill = c("yellow", "orange"))
+set.seed(14)
+x <- rchisq(100, df = 4)
+## if you really insist on using hist() ... :
+hist(x, freq = FALSE, ylim = c(0, 0.2))
+curve(dchisq(x, df = 4), col = 2, lty = 2, lwd = 2, add = TRUE)
+pie(c(Sky = 78, "Sunny side of pyramid" = 17, "Shady side of pyramid" = 5),
+    init.angle = 315, col = c("deepskyblue", "yellow", "yellow3"), border = FALSE)
 ```
 
+## Plotting
 
-```{r}
-plot(x,y,xlab="My X label",ylab="My Y label"
-     ,main="My Title",col="steelblue",pch=16,xlim=c(0,20))
-points(x,x,col="red",pch=17)
-grid()
-abline(0,2,lty=2)
-abline(0,1,lty=2)
-text(12,10, label="y = x")
-text(12,20, label="y = 2x")
-```
-
-## Subsetting / filtering data etc
-
-- R has various comparison operators
-    + `<`,`>`, `==`, `!=`
-- Each comparison gives a `TRUE` or `FALSE` ***logical*** or ***boolean*** value
-
-```{r}
-values <- rnorm(10)
-values < 0
-values > 0
-```
-
-## Subsetting / filtering data etc
-
-```{r}
-data <- data.frame(Counts = values, Name = rep(c("A","B")))
-data
-data[values>0,]
-```
-
-## Subsetting / filtering data etc
-
-```{r}
-data$Name == "A"
-data[data$Name == "A",]
-data[data$Name !="A",]
-```
-
-## Subsetting / filtering data etc
-
-- Logical vectors can be combined with `&` and `|` when we want ***all*** tests, or ***any*** test, to be true
-```{r}
-data$Name == "A" & values > 0
-data[data$Name == "A" & values > 0,]
-data$Name == "A" | values > 0
-data[data$Name == "A" | values > 0,]
-```
-
-## Conditional behaviour
-
-- A logical test can also dictate the behaviour of our code
-    + we use the  ***if / else*** syntax
-```{r eval=FALSE}
-
-if (some.condition.holds){
-  do.this...
-} else {
-  do.this.instead.....
-}
-
-```
-
-## Example code
-
--  Often used in checking for errors and to give more informative messages to the user
-- `file.exists` will return `TRUE` or `FALSE` if a specified file name could be found
-- `stop` will stop and give a message to the user
-
-```{r eval=FALSE}
-
-if(file.exists(myfile)){
-  data <- read.delim(myfile)
-  ...rest of your code here...
-  ...
-} else{
-    stop("Could not find input file")
-}
-
-```
-
-
-## Automating repetitive tasks
-
-- For an analysis involving many steps, we really want to be writing an R ***script***
-- Often we want to repeat the same procedure in the script
-    + e.g. Histograms of various columns from a file
-```{r eval=FALSE}
-hist(data[,1])
-hist(data[,2])
-hist(data[,3])
-....
-```
-- Note that each line of code is the same except for the column index
-- Tedious if we have a large number of columns
-- Prone to error
-
-##Using a `for` loop
-
-- We can simplify this code to 
-```{r eval=FALSE}
-hist(data[,i])
-```
-- Where i can be 1, 2, or 3. 
-
-##Using a `for` loop
-
-```{r eval=FALSE}
-i <- 1
-hist(data[,i])
-i <- 2
-hist(data[,i])
-i <- 3
-hist(data[,i])
-
-```
-
-##Using a `for` loop
-
-- A loop can defined as follows. The code inside the `{}` will be run for each value of i in turn
-```{r eval=FALSE}
-
-for(i in 1:3){
-  hist(data[,i])
-  }
-
-```
-
-##Using a `for` loop
-
-- Multiple lines of code can be included in inside the `{}`
-```{r eval=FALSE}
-
-for(i in 1:3){
-  ...process the data....
-  hist(data[,i])
-  ...customise the plot...
-  ...export...
-  ...etc...
-  
-  }
-
-```
-
-## R packages
-
-- The standard download of R includes the basic functions for importing data, doing stats and plotting
-- Anything fancier might require extra packages (of which there are 1000s)
-- Most populated repository is CRAN: [MetaCRAN](http://www.r-pkg.org/)
-    + ***Task Views*** can narrow-down your search
-- We will be mostly using [Bioconductor](www.bioconductor.org)
-
-## Installing a package
-
-- You need to install a package once per R version
-- From CRAN
-```{r eval=FALSE}
-install.packages("your.package.name.here")
-```
-- From Bioconductor
-    + will also install any packages that it ***depends*** on
-```{r eval=FALSE}
-source("http://www.bioconductor.org/biocLite.R")
-biocLite("my.bioc.package")
-```
-- Every time you want to use the package, you need to use the `library` function
-```{r eval=FALSE}
-library(your.package.name.here)
-library(my.bioc.package)
-```
-
-
-# Why use R for High-Throughput Analysis?
+- Simple plots are supported in the *base* distribution of R (what you get automatically when you download R). 
+    + `boxplot`, `hist`, `barplot`,... all of which are extensions of the basic `plot` function
+- Many different customisations are possible
+    + colour, overlay points / text, legends, multi-panel figures
+- We will show how some of these plots can be used to inform us about the quality of NGS data, and to visualise our results.
+- References..
+    + [Introductory R course](http://cambiotraining.github.io/r-intro/)
+    + [Quick-R](http://www.statmethods.net/graphs/index.html)
 
 ## The Bioconductor project
 
@@ -465,12 +277,18 @@ library(my.bioc.package)
 -  Packages analyse all kinds of Genomic data (>800)
 - Compulsory documentation (*vignettes*) for each package
 - 6-month release cycle
-- Course Materials
-- Example data and workflows
+- [Course Materials](http://bioconductor.org/help/course-materials/)
+- [Example data](http://bioconductor.org/packages/release/BiocViews.html#___ExperimentData) and [workflows](http://bioconductor.org/help/workflows/)
 - Common, re-usable framework and functionality
-- Available [Support](https://support.bioconductor.org/)
-
-## Example packages
+- [Available Support](https://support.bioconductor.org/)
+    + Often you will be able to interact with the package maintainers / developers and other power-users of the project software
+- Annual conferences in U.S and Europe
+    - The last European conference was in [Cambridge](https://sites.google.com/site/eurobioc2015/)
+    
+## The Bioconductor project    
+    
+    
+Many of the packages are by well-respected authors and get lots of citations.
 
 ![citations](../images/citations.png)
 
@@ -482,6 +300,13 @@ Each package has its own landing page. e.g. http://bioconductor.org/packages/rel
 - Vignettes and manuals
 - Details of package maintainer
 - After downloading, you can load using the `library` function. e.g. `library(beadarray)`
+- Only need to download once for each version of R
+- CRAN packages installed by `install.packages`
+- What packages to install?
+    + [METACRAN](http://www.r-pkg.org/) can help
+
+# A simple workflow for high-throughput data
+
 
 ##Reading data using Bioconductor
 
@@ -681,6 +506,8 @@ mget("31553_at",hgu95av2SYMBOL)
 mget("31553_at",hgu95av2ENTREZID)
 mget("31553_at",hgu95av2GO)
 ```
+
+
 
 ## Introducing the practical
 
