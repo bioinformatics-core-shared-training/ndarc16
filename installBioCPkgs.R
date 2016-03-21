@@ -1,7 +1,7 @@
 source("http://www.bioconductor.org/biocLite.R")
 options(BioC_mirror = c("Cambridge" = "http://mirrors.ebi.ac.uk/bioconductor/"))
 options(repos = c("CRAN" = "http://cran.ma.imperial.ac.uk"))
-biocLite(c("Biostrings", "ShortRead", "DESeq2", "edgeR","biomaRt", "BSgenome",
+biocLite(c("Biostrings", "DESeq", "DESeq2", "edgeR","biomaRt", "BSgenome",
         "pasillaBamSubset", "pasilla",
         "rtracklayer", "ggbio", "vsn","gplots","RColorBrewer","chipseq","htSeqTools","limma","org.Hs.eg.db",
         "Rcade", "ChIPQC","TxDb.Hsapiens.UCSC.hg19.knownGene","BSgenome.Hsapiens.UCSC.hg19","ChIPpeakAnno","statmod","locfit",
