@@ -5,7 +5,7 @@ biocLite(c("Biostrings", "DESeq", "DESeq2", "edgeR","biomaRt", "BSgenome",
         "pasillaBamSubset", "pasilla",
         "rtracklayer", "ggbio", "vsn","gplots","RColorBrewer","chipseq","htSeqTools","limma","org.Hs.eg.db",
         "Rcade", "ChIPQC","TxDb.Hsapiens.UCSC.hg19.knownGene","BSgenome.Hsapiens.UCSC.hg19","ChIPpeakAnno","statmod","locfit",
-        "wakefield"))
+        "wakefield","goseq"))
 
 ##Also need to install spp_1.11.tar.gz which requires the 'boost' library.
 
