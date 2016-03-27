@@ -6,6 +6,11 @@ biocLite(c("Biostrings", "DESeq", "DESeq2", "edgeR","biomaRt", "BSgenome",
         "rtracklayer", "ggbio", "vsn","gplots","RColorBrewer","chipseq","htSeqTools","limma","org.Hs.eg.db",
         "Rcade", "ChIPQC","TxDb.Hsapiens.UCSC.hg19.knownGene","BSgenome.Hsapiens.UCSC.hg19","ChIPpeakAnno","statmod","locfit",
         "wakefield","goseq"))
+#packages for ChIP on Day 4        
+biocLite("BSgenome.Mmusculus.UCSC.mm9")
+biocLite("ChIPseeker")
+biocLite("rGREAT")
+biocLite("AnnotationHub")
 
 ##Also need to install spp_1.11.tar.gz which requires the 'boost' library.
 
