@@ -7,7 +7,7 @@ http://gtpb.igc.gulbenkian.pt/bicourses/NDARC16/
 
 tiny.cc
 
-tiny.cc/ndarc16
+http://tiny.cc/ndarc16
 
 # Overview
 
