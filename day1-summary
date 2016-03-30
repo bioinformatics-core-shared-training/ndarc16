@@ -1,0 +1,22 @@
+# What we learnt yesterday....
+
+- Basics of RStudio
+    + How to use functions
+    + How to get help
+- Manipulating data in R
+    + extracting rows and columns
+    + filtering based on particular values
+- What the common file types are; what kind of data they contain
+    + fastq
+    + sam
+    + bam
+    + bed / gff / wig
+- How to run fastqc
+    + What to look for in a good / bad run
+    + how to identify contamination?
+    + when should you trim
+- Basics of IGV
+    + How to navigate around the genome
+    + How to load your own data
+    
+    
