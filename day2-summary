@@ -1,0 +1,14 @@
+# What we learnt yesterday
+
+- Bioconductor packages that work with NGS data
+- Accessing genome sequences BSgenome....
+- Extract sequence for particular postion
+    + Manipulate sequence, complement, translate etc
+- Create a GRanges object with chromosome, start, end, strand etc
+- Resizing, shifting, coverage operations
+- Overlapping sets of ranges
+- Import sequencing reads from a bam file
+    + result is a GRanges-like object
+- Finer-control over information imported from a bam file
+    + include mapping qualities, flags
+    + control what region is imported from the file
