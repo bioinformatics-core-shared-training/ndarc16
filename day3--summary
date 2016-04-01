@@ -6,9 +6,6 @@
     + filtering
     + specifying the model
     + applying the test
-    
-------------    
-    
 - Getting data from biomaRt
 - Using "organism-level" packages
     + converting between identifiers etc
@@ -20,4 +17,8 @@
 - Visualisation
     + ggplot2 introduction
     + ggbio to make visualise your data
+- Unsupervised techniques
+    + clustering
+    + principal components analysis (PCA)
+    + (enrichment analysis)
   
