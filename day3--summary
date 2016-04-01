@@ -1,0 +1,23 @@
+# What we learnt yesterday...
+
+- edgeR and DESeq2 workflows
+    + counts -----> list of DE genes
+    + normalisation
+    + filtering
+    + specifying the model
+    + applying the test
+    
+------------    
+    
+- Getting data from biomaRt
+- Using "organism-level" packages
+    + converting between identifiers etc
+    + obtaining extra annotation for DE genes
+- transcript databases
+    + obtain list of transcripts/ exons for a particular organism and build
+    + using gene models in GRanges operations (overlapping etc)
+    + import the reads overlapping with a particular gene
+- Visualisation
+    + ggplot2 introduction
+    + ggbio to make visualise your data
+  
